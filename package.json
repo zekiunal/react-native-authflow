@@ -1,7 +1,7 @@
 {
   "name": "react-native-authflow",
   "title": "React Native Authflow",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "TODO",
   "main": "index.js",
   "scripts": {
@@ -9,25 +9,36 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/github_account/react-native-authflow.git",
-    "baseUrl": "https://github.com/github_account/react-native-authflow"
+    "url": "git+https://github.com/zekiunal/react-native-authflow.git",
+    "baseUrl": "https://github.com/zekiunal/react-native-authflow"
   },
   "keywords": [
     "react-native"
   ],
   "author": {
-    "name": "Your Name",
-    "email": "yourname@email.com"
+    "name": "Zeki Ünal",
+    "email": "zekiunal@gmail.com"
   },
   "license": "MIT",
   "licenseFilename": "LICENSE",
   "readmeFilename": "README.md",
+  "dependencies": {
+    "@react-native-community/masked-view": "0.1.5",
+    "axios": "^0.19.1",
+    "react-native-elements": "1.2.7",
+    "react-native-gesture-handler": "1.5.3",
+    "react-native-reanimated": "1.4.0",
+    "react-native-safe-area-context": "0.6.2",
+    "react-native-screens": "2.0.0-alpha.23",
+    "react-navigation": "4.0.10",
+    "react-navigation-stack": "2.0.13"
+  },
   "peerDependencies": {
-    "react": "^16.8.1",
-    "react-native": ">=0.59.0-rc.0 <1.0.x"
+    "react": "^16.9.0",
+    "react-native": ">=0.61.5 <1.0.x"
   },
   "devDependencies": {
-    "react": "^16.8.3",
-    "react-native": "^0.59.10"
+    "react": "^16.9.0",
+    "react-native": "^0.61.5"
   }
 }
