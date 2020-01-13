@@ -10,8 +10,9 @@ const SignUpScreen = () => {
     return (
         <View>
             <Input />
+            <Text>This is SignUpScreen</Text>
+
         </View>
-        <Text>This is SignUpScreen</Text>
     );
 };
 
