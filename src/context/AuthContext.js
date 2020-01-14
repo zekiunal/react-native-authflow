@@ -8,7 +8,7 @@ const authReducer = (state, action) => {
     }
 };
 
-const  signUp = dispatch => {
+const  signUp = (dispatch) => {
     return async ({email, password}) => {
         try {
             const response = await api.post('/signup', {email, password});
@@ -35,7 +35,7 @@ const signOut = (dispatch) => {
 };
 
 export const {Provider, Context} = createDataContext(
-    authReducer(),
+    authReducer,
     {signIn, signOut, signUp},
     {isSignedIn: false}
 );
