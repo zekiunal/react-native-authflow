@@ -1,5 +1,14 @@
-import { NativeModules } from 'react-native';
+import React from 'react';
 
-const { Authflow } = NativeModules;
+import {createStackNavigator} from 'react-navigation-stack';
+import SignInScreen from "./src/screens/SignInScreen";
+import SignUpScreen from "./src/screens/SignUpScreen";
 
-export default Authflow;
+function createAuthFlowNavigation() {
+    return createStackNavigator({
+        SignIn: SignInScreen,
+        SignUp: SignUpScreen
+    });
+}
+
+export default createAuthFlowNavigation;
