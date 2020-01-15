@@ -7,8 +7,8 @@ import {Provider, Context} from './src/context/AuthContext';
 
 const createAuthFlowNavigation = () => {
     return createStackNavigator({
-        SignIn: SignInScreen,
-        SignUp: SignUpScreen
+        SignUp: SignUpScreen,
+        SignIn: SignInScreen
     });
 }
 
