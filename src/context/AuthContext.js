@@ -10,16 +10,16 @@ const authReducer = (state, action) => {
 
 const  signUp = (dispatch) => {
     return async ({email, password}) => {
-        let userData = {};
-        userData.client_id = "app";
-        userData.client_secret = "secret";
-        userData.grant_type = "password";
-        userData.scope = "basic";
-        userData.username = email;
-        userData.password = password;
-        console.log(userData);
+        let data = {};
+        data.client_id = "app";
+        data.client_secret = "secret";
+        data.grant_type = "password";
+        data.scope = "basic";
+        data.username = email;
+        data.password = password;
+        console.log(data);
         try {
-            const response = await api.post('/user/login', userData);
+            const response = await api.post('/user/login', data);
             console.log(response.data);
         } catch (err) {
             console.log(err.message);
