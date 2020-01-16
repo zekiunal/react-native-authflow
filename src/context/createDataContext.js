@@ -17,7 +17,6 @@ export default (reducer, actions, defaultValue) => {
         }
 
         state.configuration = configuration;
-        api.setConfig(configuration.axios);
 
         return (
             <Context.Provider value={{state, ...boundActions}}>

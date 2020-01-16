@@ -1,8 +1,10 @@
 import axios from 'axios';
+import {AuthFlowConfig} from "../../index";
 
+/*
 export default class api {
 
-    static configuration= false;
+    static configuration= {};
 
     static requester= axios.create({});
 
@@ -12,3 +14,6 @@ export default class api {
         return this;
     }
 }
+*/
+
+export default axios.create(AuthFlowConfig.getApiConfig())

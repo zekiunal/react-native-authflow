@@ -17,7 +17,7 @@ const  signUp = (dispatch) => {
         data.password = password;
 
         try {
-            const response = await api.requester.post('/user/login', data);
+            const response = await api.post('/user/login', data);
             console.log(response.data);
         } catch (err) {
             console.log(err.message);
