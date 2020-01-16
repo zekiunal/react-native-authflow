@@ -1,6 +1,8 @@
 import createDataContext from './createDataContext';
 import axios from "../api/api";
 import AuthFlowConfig from "react-native-authflow/src/helpers/AuthFlowConfig";
+import AsyncStorage from '@react-native-community/async-storage';
+import {navigate} from "react-native-authflow";
 
 let api = false;
 
@@ -14,34 +16,44 @@ const authReducer = (state, action) => {
 
     switch (action.type) {
         case 'error':
-            return {...state, error: action.payload};
+            return {...state, error: action.payload, token: false};
+        case 'signup':
+            return {...state, token: action.payload, error: false};
         default:
             return state;
     }
 };
 
-const  signUp = (dispatch) => {
+const signUp = (dispatch) => async ({email, password}) => {
 
-    return async ({email, password}) => {
+    let data = {};
 
-        let data = {};
+    data.username = email;
+    data.password = password;
 
-        data.username = email;
-        data.password = password;
+    if (!api) {
+        throw new Error("Api not defined!");
+    }
 
-        if(!api) {
-            throw new Error("Api not defined!");
-        }
+    try {
+        const response = await api.post('/user/login', data);
 
-        try {
-            const response = await api.post('/user/login', data);
-            console.log(response.data);
-        } catch (err) {
-            console.log(err.message);
-            dispatch({type:'error', payload: 'Username or password is wrong!'});
-        }
-    };
+        await AsyncStorage.setItem('token', response.data.access_token);
+        await AsyncStorage.setItem('refresh_token', response.data.refresh_token);
+        await AsyncStorage.setItem('scope', response.data.scope);
+
+        dispatch({type: 'signup', payload: response.data.token})
+
+        navigate('Home');
+
+    } catch (err) {
+        dispatch({type: 'error', payload: 'Username or password is wrong!'});
+
+        console.log(err.message);
+
+    }
 };
+
 
 const signIn = (dispatch) => {
     console.log("signIn");
