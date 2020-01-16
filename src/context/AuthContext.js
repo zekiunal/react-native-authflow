@@ -42,7 +42,7 @@ const signUp = (dispatch) => async ({email, password}) => {
         await AsyncStorage.setItem('refresh_token', response.data.refresh_token);
         await AsyncStorage.setItem('scope', response.data.scope);
 
-        dispatch({type: 'signup', payload: response.data.token})
+        dispatch({type: 'signup', payload: response.data.access_token})
 
         navigate('Home');
 
