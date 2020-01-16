@@ -1,12 +1,12 @@
 import createDataContext from './createDataContext';
 import axios from "../api/api";
-import authFlowConfig from "react-native-authflow/src/helpers/AuthFlowConfig";
+import AuthFlowConfig from "react-native-authflow/src/helpers/AuthFlowConfig";
 
 let api = false;
 
 const initApi = () => {
     console.log("initApi");
-    api = axios(authFlowConfig.getApiConfig());
+    api = axios(AuthFlowConfig.getApiConfig());
 }
 
 const authReducer = (state, action) => {
@@ -21,7 +21,7 @@ const authReducer = (state, action) => {
 const  signUp = (dispatch) => {
 
     return async ({email, password}) => {
-        
+
         let data = {};
 
         data.username = email;
