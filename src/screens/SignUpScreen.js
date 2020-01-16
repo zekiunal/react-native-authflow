@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet, Text} from 'react-native';
 import {Context as AuthContext} from "../context/AuthContext";
 import Spacer from "../components/Spacer";
 import {Input, Button} from "react-native-elements";
@@ -10,7 +10,7 @@ const SignUpScreen = ({navigation}) => {
     const [password, setPassword] = useState('123456');
 
     return (
-        <Viev style={styles.container}>
+        <View style={styles.container}>
             <Spacer>
                 <Text h3>This is SignUpScreen</Text>
             </Spacer>
@@ -42,7 +42,7 @@ const SignUpScreen = ({navigation}) => {
                     }
                 />
             </Spacer>
-        </Viev>
+        </View>
 
     );
 };
@@ -55,7 +55,7 @@ SignUpScreen.navigationOptions = () => {
 
 const styles = StyleSheet.create({
     container: {
-        borderColor: red,
+        borderColor: 'red',
         borderWidth: 10,
         flex: 1,
         justifyContent: 'center',
