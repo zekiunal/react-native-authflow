@@ -1,18 +1,18 @@
 import React, {useContext, useState} from 'react';
-import {Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {Context as AuthContext} from "../context/AuthContext";
 import Spacer from "../components/Spacer";
 import {Input, Button} from "react-native-elements";
 
-const SignUpScreen = () => {
+const SignUpScreen = ({navigation}) => {
     const {state, signUp} = useContext(AuthContext);
     const [email, setEmail] = useState('zekiunal@gmail.com');
     const [password, setPassword] = useState('123456');
 
     return (
-        <>
+        <Viev style={styles.container}>
             <Spacer>
-                <Text>This is SignUpScreen</Text>
+                <Text h3>This is SignUpScreen</Text>
             </Spacer>
             <Spacer>
                 <Input
@@ -25,6 +25,7 @@ const SignUpScreen = () => {
             </Spacer>
             <Spacer>
                 <Input
+                    secureTextEntry
                     label="Password"
                     value={password}
                     onChangeText={setPassword}
@@ -33,13 +34,33 @@ const SignUpScreen = () => {
                 />
             </Spacer>
             <Spacer>
-                <Button label="Sign Up" onPress={() => {signUp({email, password})}}/>
+                <Button
+                    label="Sign Up"
+                    onPress={() => {
+                        signUp({email, password})
+                    }
+                    }
+                />
             </Spacer>
-        </>
+        </Viev>
 
     );
 };
 
-const styles = StyleSheet.create({});
+SignUpScreen.navigationOptions = () => {
+    return {
+        header: null
+    }
+}
+
+const styles = StyleSheet.create({
+    container: {
+        borderColor: red,
+        borderWidth: 10,
+        flex: 1,
+        justifyContent: 'center',
+        marginBottom: 250
+    }
+});
 
 export default SignUpScreen;
