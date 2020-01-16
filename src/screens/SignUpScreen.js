@@ -8,6 +8,9 @@ const SignUpScreen = ({navigation}) => {
     const {state, signUp} = useContext(AuthContext);
     const [email, setEmail] = useState('zekiunal@gmail.com');
     const [password, setPassword] = useState('123456');
+
+    console.log(state);
+
     return (
         <View style={styles.container}>
             <Spacer>
@@ -32,6 +35,9 @@ const SignUpScreen = ({navigation}) => {
                     autoCorrect={false}
                 />
             </Spacer>
+
+            {state.error ? <Text style={styles.error}>{state.error}</Text> : null}
+
             <Spacer>
                 <Button
                     onPress={() => {
@@ -56,6 +62,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
+    },
+    error: {
+        fontSize: 16,
+        color: 'red',
+        marginLeft: 20,
+        marginTop: 10
     }
 });
 

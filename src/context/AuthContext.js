@@ -13,6 +13,8 @@ const authReducer = (state, action) => {
     console.log("authReducer");
 
     switch (action.type) {
+        case 'error':
+            return {...state, error: action.payload};
         default:
             return state;
     }
@@ -36,6 +38,7 @@ const  signUp = (dispatch) => {
             console.log(response.data);
         } catch (err) {
             console.log(err.message);
+            dispatch({type:'error', payload: 'Username or password is wrong!'});
         }
     };
 };
@@ -61,5 +64,5 @@ const signOut = (dispatch) => {
 export const {Provider, Context} = createDataContext(
     authReducer,
     {signIn, signOut, signUp, initApi},
-    {isSignedIn: false}
+    {token: false, error: false}
 );

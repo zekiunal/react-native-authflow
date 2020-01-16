@@ -1,7 +1,7 @@
 {
   "name": "react-native-authflow",
   "title": "React Native Authflow",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "TODO",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,7 @@
   "readmeFilename": "README.md",
   "dependencies": {
     "@react-native-community/masked-view": "0.1.5",
+    "@react-native-community/async-storage": "^1.7.1",
     "axios": "^0.19.1",
     "react-native-elements": "1.2.7",
     "react-native-gesture-handler": "1.5.3",
