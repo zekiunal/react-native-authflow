@@ -1,4 +1,5 @@
 import React, {useReducer} from 'react';
+import api from "../api/api";
 
 export default (reducer, actions, defaultValue) => {
     const Context = React.createContext();
@@ -16,6 +17,7 @@ export default (reducer, actions, defaultValue) => {
         }
 
         state.configuration = configuration;
+        api.setConfig(configuration.axios);
 
         return (
             <Context.Provider value={{state, ...boundActions}}>
