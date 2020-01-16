@@ -1,7 +1,17 @@
 import createDataContext from './createDataContext';
-import api from "../api/api";
+import axios from "../api/api";
+import authFlowConfig from "react-native-authflow/src/helpers/AuthFlowConfig";
+
+let api = false;
+
+const initApi = () => {
+    console.log("initApi");
+    api = axios(authFlowConfig.getApiConfig());
+}
 
 const authReducer = (state, action) => {
+    console.log("authReducer");
+
     switch (action.type) {
         default:
             return state;
@@ -11,10 +21,15 @@ const authReducer = (state, action) => {
 const  signUp = (dispatch) => {
 
     return async ({email, password}) => {
+        
         let data = {};
 
         data.username = email;
         data.password = password;
+
+        if(!api) {
+            throw new Error("Api not defined!");
+        }
 
         try {
             const response = await api.post('/user/login', data);
@@ -26,6 +41,8 @@ const  signUp = (dispatch) => {
 };
 
 const signIn = (dispatch) => {
+    console.log("signIn");
+
     return ({email, password}) => {
         // try to sign in
         // update state
@@ -34,6 +51,8 @@ const signIn = (dispatch) => {
 };
 
 const signOut = (dispatch) => {
+    console.log("signOut");
+
     return () => {
         // sign out
     };
@@ -41,6 +60,6 @@ const signOut = (dispatch) => {
 
 export const {Provider, Context} = createDataContext(
     authReducer,
-    {signIn, signOut, signUp},
+    {signIn, signOut, signUp, initApi},
     {isSignedIn: false}
 );

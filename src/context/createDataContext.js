@@ -17,7 +17,7 @@ export default (reducer, actions, defaultValue) => {
         }
 
         state.configuration = configuration;
-
+        
         return (
             <Context.Provider value={{state, ...boundActions}}>
                 {children}
