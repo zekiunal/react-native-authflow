@@ -2,17 +2,13 @@ import axios from 'axios';
 
 export default class api {
 
-    static configuration: false;
+    static configuration= false;
 
-    static requester: axios.create({});
+    static requester= axios.create({});
 
     static setConfig(config) {
         this.configuration = config;
-        this.api = axios.create(this.configuration);
+        this.requester = axios.create(this.configuration);
         return this;
     }
 }
-
-
-
-
