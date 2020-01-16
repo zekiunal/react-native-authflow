@@ -9,6 +9,7 @@ const authReducer = (state, action) => {
 };
 
 const  signUp = (dispatch) => {
+
     return async ({email, password}) => {
         let data = {};
         data.client_id = "app";
@@ -18,8 +19,9 @@ const  signUp = (dispatch) => {
         data.username = email;
         data.password = password;
         console.log(data);
+
         try {
-            const response = await api.post('/user/login', data);
+            const response = await api.requester.post('/user/login', data);
             console.log(response.data);
         } catch (err) {
             console.log(err.message);
