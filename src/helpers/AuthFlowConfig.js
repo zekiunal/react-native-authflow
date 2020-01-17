@@ -48,7 +48,8 @@ export default class AuthFlowConfig {
                 }
             }
         },
-        language: 'tr'
+        language: 'tr',
+        defautRoute: 'Home'
     };
 
     static setConfig(config) {
