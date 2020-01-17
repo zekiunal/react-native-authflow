@@ -9,7 +9,9 @@ let api = false;
 const initApi = () => {
     console.log("initApi");
     api = axios(AuthFlowConfig.getApiConfig());
-}
+};
+
+
 
 const authReducer = (state, action) => {
     console.log("authReducer");
@@ -19,9 +21,15 @@ const authReducer = (state, action) => {
             return {...state, error: action.payload, token: false};
         case 'signin':
             return {...state, token: action.payload, error: false};
+        case 'clear':
+            return {...state, error: false};
         default:
             return state;
     }
+};
+
+const clearErrors = (dispatch) => () => {
+    dispatch({type: 'clear'})
 };
 
 const signUp = (dispatch) => async ({email, password}) => {
@@ -93,6 +101,6 @@ const signOut = (dispatch) => {
 
 export const {Provider, Context} = createDataContext(
     authReducer,
-    {signIn, signOut, signUp, initApi},
+    {signIn, signOut, signUp, initApi, clearErrors},
     {token: false, error: false}
 );

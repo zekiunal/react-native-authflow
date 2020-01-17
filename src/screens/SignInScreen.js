@@ -3,12 +3,20 @@ import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import {Context as AuthContext} from "../context/AuthContext";
 import AuthForm from "../components/AuthForm";
 import Links from "../components/Links";
+import {NavigationEvents} from "react-navigation";
 
 const SignInScreen = () => {
-    const {state, SignIn} = useContext(AuthContext);
+    const {state, SignIn, clear} = useContext(AuthContext);
 
     return (
         <View style={styles.container}>
+
+            <NavigationEvents
+                onWillFocus={() => {}}
+                onDidFocus={() => {}}
+                onWillBlur={clear}
+                onDidBlur={() => {}}
+            />
 
             <AuthForm
                 headerText='Sign In'
@@ -19,7 +27,7 @@ const SignInScreen = () => {
 
             <Links
                 text="Dont you have an account? Sign up instead"
-                routeName="SignIn"
+                routeName="SignUp"
             />
 
         </View>
