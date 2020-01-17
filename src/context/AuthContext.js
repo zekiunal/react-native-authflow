@@ -28,8 +28,9 @@ const authReducer = (state, action) => {
         case 'clear':
             return {...state, error: false};
         case 'changeLanguage':
-            if (state.language != action.payload)
+            if (state.language !== action.payload)
                 return {...state, language: action.payload};
+            return state;
         default:
             return state;
     }
@@ -39,7 +40,7 @@ const autoSignIn = (dispatch) => async () => {
     const token = await AsyncStorage.getItem('token');
     if (token) {
         dispatch({type: 'signin', payload: token});
-        navigate('Home');
+        navigate(AuthFlowConfig.getConfig().defautRoute);
     } else {
         navigate('SignIn');
     }
@@ -69,7 +70,7 @@ const signUp = (dispatch) => async ({email, password}) => {
 
         dispatch({type: 'signin', payload: response.data.access_token});
 
-        navigate('Home');
+        navigate(AuthFlowConfig.getConfig().defautRoute);
 
     } catch (err) {
         dispatch({type: 'error', payload: 'incorrect email or password.'});
@@ -99,7 +100,7 @@ const signIn = (dispatch) => async ({email, password}) => {
 
         dispatch({type: 'signin', payload: response.data.access_token})
 
-        navigate('Home');
+        navigate(AuthFlowConfig.getConfig().defautRoute);
 
     } catch (err) {
         dispatch({type: 'error', payload: 'incorrect email or password.'});
