@@ -34,7 +34,6 @@ const SignInScreen = (props) => {
                 routeName="SignUp"
                 onSubmitLanguage={changeLanguage}
             />
-
         </View>
     );
 };
