@@ -6,9 +6,13 @@ import {navigate} from "react-native-easy-navigator";
 
 let api = false;
 
-const initApi = () => {
+const initApi = async (dispatch) => {
     console.log("initApi");
     api = axios(AuthFlowConfig.getApiConfig());
+    const language = await AsyncStorage.getItem('language');
+    if (language) {
+        dispatch({type: "changeLanguage", payload: language})
+    }
 };
 
 const authReducer = (state, action) => {
@@ -23,6 +27,9 @@ const authReducer = (state, action) => {
             return {...state, token: action.payload, error: false};
         case 'clear':
             return {...state, error: false};
+        case 'changeLanguage':
+            if (state.language != action.payload)
+                return {...state, language: action.payload};
         default:
             return state;
     }
@@ -109,8 +116,17 @@ const signOut = (dispatch) => {
     };
 };
 
+const changeLanguage = (dispatch) => {
+    return async (language) => {
+        console.log(language);
+        await AsyncStorage.setItem('language', language);
+        dispatch({type: 'changeLanguage', payload: language})
+    };
+};
+
+
 export const {Provider, Context} = createDataContext(
     authReducer,
-    {signIn, signOut, signUp, initApi, clear, autoSignIn},
-    {token: false, error: false}
+    {signIn, signOut, signUp, initApi, clear, autoSignIn, changeLanguage},
+    {token: false, error: false, language: 'tr'}
 );

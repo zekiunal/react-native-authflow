@@ -5,8 +5,11 @@ import AuthForm from "../components/AuthForm";
 import Links from "../components/Links";
 import {NavigationEvents} from "react-navigation";
 
-const SignUpScreen = () => {
-    const {state, signUp, clear, autoSignIn} = useContext(AuthContext);
+const SignUpScreen = (props) => {
+
+    const {state, signUp, clear, autoSignIn, changeLanguage} = useContext(AuthContext);
+
+    const language = props.screenProps.translate[state.language];
 
     return (
         <View style={styles.container}>
@@ -22,12 +25,13 @@ const SignUpScreen = () => {
                 headerText='Sign Up'
                 errorMessage={state.error}
                 onSubmit={({email, password}) => signUp({email, password})}
-                submitButtonText='Sign Up'
+                submitButtonText={language.button.signUp}
             />
 
             <Links
-                text="Already have an account? Sign in instead"
+                text={language.link.signIn}
                 routeName="SignIn"
+                onSubmitLanguage={changeLanguage}
             />
 
         </View>

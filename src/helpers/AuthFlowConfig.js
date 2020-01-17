@@ -13,6 +13,10 @@ export default class AuthFlowConfig {
                     signUp: 'Sign Up',
                     signIn: 'Sign In',
                     signOut: 'Sign Out'
+                },
+                link: {
+                    signUp: "Dont you have an account? Sign up instead",
+                    signIn: "Already have an account? Sign in instead"
                 }
             },
             tr: {
@@ -24,7 +28,7 @@ export default class AuthFlowConfig {
                 }
             }
         },
-        language: 'en'
+        language: 'tr'
     };
 
     static setConfig(config) {

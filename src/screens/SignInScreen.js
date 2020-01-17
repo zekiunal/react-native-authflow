@@ -4,9 +4,12 @@ import {Context as AuthContext} from "../context/AuthContext";
 import AuthForm from "../components/AuthForm";
 import Links from "../components/Links";
 import {NavigationEvents} from "react-navigation";
+import Spacer from "react-native-authflow/src/components/Spacer";
 
-const SignInScreen = () => {
-    const {state, SignIn, clear, autoSignIn} = useContext(AuthContext);
+const SignInScreen = (props) => {
+    const {state, SignIn, clear, autoSignIn, changeLanguage} = useContext(AuthContext);
+    
+    const language = props.screenProps.translate[state.language];
 
     useEffect(() => {
         autoSignIn();
@@ -26,13 +29,16 @@ const SignInScreen = () => {
                 headerText='Sign In'
                 errorMessage={state.error}
                 onSubmit={({email, password}) => SignIn({email, password})}
-                submitButtonText='Sign In'
+                submitButtonText={language.button.signIn}
             />
 
             <Links
-                text="Dont you have an account? Sign up instead"
+                text={language.link.signUp}
                 routeName="SignUp"
+                onSubmitLanguage={changeLanguage}
             />
+
+
 
         </View>
     );
@@ -48,6 +54,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
+    },
+    link: {
+        color: 'blue'
     }
 });
 
