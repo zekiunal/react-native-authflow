@@ -54,7 +54,7 @@ export default class AuthFlowConfig {
 
     static setConfig(config) {
         console.log('setConfig');
-        this.configuration = {...this.configuration, config}
+        this.configuration = {config, ...this.configuration}
     }
 
     static getConfig() {
@@ -68,7 +68,7 @@ export default class AuthFlowConfig {
     }
 
     static setApiConfig(config) {
-        this.configuration.api = {...this.configuration.api, config}
+        this.configuration.api = {config, ...this.configuration.api}
         return this.configuration.api;
     }
 }
