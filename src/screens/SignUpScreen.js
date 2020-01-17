@@ -22,10 +22,12 @@ const SignUpScreen = (props) => {
             />
 
             <AuthForm
-                headerText='Sign Up'
+                headerText={language.header.signUp}
                 errorMessage={state.error}
                 onSubmit={({email, password}) => signUp({email, password})}
                 submitButtonText={language.button.signUp}
+                emailLabel={language.form.email}
+                passwordLabel={language.form.password}
             />
 
             <Links

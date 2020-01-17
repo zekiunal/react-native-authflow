@@ -9,6 +9,14 @@ export default class AuthFlowConfig {
         translate: {
             en: {
                 RTL: false,
+                header: {
+                    signUp: 'Sign Up',
+                    signIn: 'Sign In'
+                },
+                form: {
+                    email: 'Email',
+                    password: 'Password'
+                },
                 button: {
                     signUp: 'Sign Up',
                     signIn: 'Sign In',
@@ -21,10 +29,22 @@ export default class AuthFlowConfig {
             },
             tr: {
                 RTL: false,
+                header: {
+                    signUp: 'Sign Up',
+                    signIn: 'Sign In'
+                },
+                form: {
+                    email: 'Email',
+                    password: 'Password'
+                },
                 button: {
                     signUp: 'Üye Ol',
                     signIn: 'Giriş',
                     signOut: 'Çıkış'
+                },
+                link: {
+                    signUp: "Kayıtlı bir hesabınız yok mu? Üye olun!",
+                    signIn: "Zaten üye misiniz? Giriş yapın!"
                 }
             }
         },

@@ -1,7 +1,7 @@
 {
   "name": "react-native-authflow",
   "title": "React Native Authflow",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "description": "TODO",
   "main": "index.js",
   "scripts": {

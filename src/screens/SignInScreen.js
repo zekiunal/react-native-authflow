@@ -8,7 +8,7 @@ import Spacer from "react-native-authflow/src/components/Spacer";
 
 const SignInScreen = (props) => {
     const {state, SignIn, clear, autoSignIn, changeLanguage} = useContext(AuthContext);
-    
+
     const language = props.screenProps.translate[state.language];
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const SignInScreen = (props) => {
             />
 
             <AuthForm
-                headerText='Sign In'
+                headerText={language.header.signIn}
                 errorMessage={state.error}
                 onSubmit={({email, password}) => SignIn({email, password})}
                 submitButtonText={language.button.signIn}
