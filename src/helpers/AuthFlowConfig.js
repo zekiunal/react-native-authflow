@@ -49,12 +49,11 @@ export default class AuthFlowConfig {
             }
         },
         language: 'tr',
-        defautRoute: 'Home'
+        defaultRoute: 'Home'
     };
 
     static setConfig(config) {
-        console.log('setConfig');
-        this.configuration = {config, ...this.configuration}
+        this.configuration = config
     }
 
     static getConfig() {
@@ -68,7 +67,7 @@ export default class AuthFlowConfig {
     }
 
     static setApiConfig(config) {
-        this.configuration.api = {config, ...this.configuration.api}
+        this.configuration.api = config
         return this.configuration.api;
     }
 }

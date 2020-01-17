@@ -36,10 +36,7 @@ const AuthForm = ({headerText, errorMessage, onSubmit, submitButtonText, emailLa
 
             <Spacer>
                 <Button
-                    onPress={() => {
-                        onSubmit({email, password})
-                    }
-                    }
+                    onPress={() => {onSubmit({email, password})}}
                     title={submitButtonText}
                 />
             </Spacer>

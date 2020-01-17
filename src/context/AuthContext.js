@@ -8,6 +8,7 @@ let api = false;
 
 const initApi = async (dispatch) => {
     console.log("initApi");
+    console.log(AuthFlowConfig.getApiConfig());
     api = axios(AuthFlowConfig.getApiConfig());
     const language = await AsyncStorage.getItem('language');
     if (language) {
@@ -40,7 +41,7 @@ const autoSignIn = (dispatch) => async () => {
     const token = await AsyncStorage.getItem('token');
     if (token) {
         dispatch({type: 'signin', payload: token});
-        navigate(AuthFlowConfig.getConfig().defautRoute);
+        navigate(AuthFlowConfig.getConfig().defaultRoute);
     } else {
         navigate('SignIn');
     }
@@ -70,7 +71,7 @@ const signUp = (dispatch) => async ({email, password}) => {
 
         dispatch({type: 'signin', payload: response.data.access_token});
 
-        navigate(AuthFlowConfig.getConfig().defautRoute);
+        navigate(AuthFlowConfig.getConfig().defaultRoute);
 
     } catch (err) {
         dispatch({type: 'error', payload: 'incorrect email or password.'});
@@ -93,20 +94,14 @@ const signIn = (dispatch) => async ({email, password}) => {
 
     try {
         const response = await api.post('/user/login', data);
-
         await AsyncStorage.setItem('token', response.data.access_token);
         await AsyncStorage.setItem('refresh_token', response.data.refresh_token);
         await AsyncStorage.setItem('scope', response.data.scope);
-
         dispatch({type: 'signin', payload: response.data.access_token})
-
-        navigate(AuthFlowConfig.getConfig().defautRoute);
-
+        navigate(AuthFlowConfig.getConfig().defaultRoute);
     } catch (err) {
         dispatch({type: 'error', payload: 'incorrect email or password.'});
-
         console.log(err.message);
-
     }
 };
 const signOut = (dispatch) => {
