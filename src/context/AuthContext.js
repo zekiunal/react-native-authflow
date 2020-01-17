@@ -11,8 +11,6 @@ const initApi = () => {
     api = axios(AuthFlowConfig.getApiConfig());
 };
 
-
-
 const authReducer = (state, action) => {
     console.log("authReducer");
 
@@ -25,6 +23,16 @@ const authReducer = (state, action) => {
             return {...state, error: false};
         default:
             return state;
+    }
+};
+
+const autoSignIn = (dispatch) => async () => {
+    const token = await AsyncStorage.getItem('token');
+    if (token) {
+        dispatch({type: 'signin', payload: token});
+        navigate('Home');
+    } else {
+        navigate('SignUp');
     }
 };
 
@@ -50,7 +58,7 @@ const signUp = (dispatch) => async ({email, password}) => {
         await AsyncStorage.setItem('refresh_token', response.data.refresh_token);
         await AsyncStorage.setItem('scope', response.data.scope);
 
-        dispatch({type: 'signin', payload: response.data.access_token})
+        dispatch({type: 'signin', payload: response.data.access_token});
 
         navigate('Home');
 
@@ -101,6 +109,6 @@ const signOut = (dispatch) => {
 
 export const {Provider, Context} = createDataContext(
     authReducer,
-    {signIn, signOut, signUp, initApi, clearErrors},
+    {signIn, signOut, signUp, initApi, clearErrors, autoSignIn},
     {token: false, error: false}
 );
