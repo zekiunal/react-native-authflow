@@ -2,7 +2,7 @@ import createDataContext from './createDataContext';
 import axios from "../api/api";
 import AuthFlowConfig from "react-native-authflow/src/helpers/AuthFlowConfig";
 import AsyncStorage from '@react-native-community/async-storage';
-import {navigate} from "react-native-authflow";
+import {navigate} from "react-native-easy-navigator";
 
 let api = false;
 
@@ -42,29 +42,47 @@ const signUp = (dispatch) => async ({email, password}) => {
         await AsyncStorage.setItem('refresh_token', response.data.refresh_token);
         await AsyncStorage.setItem('scope', response.data.scope);
 
-        dispatch({type: 'signup', payload: response.data.access_token})
+        dispatch({type: 'signin', payload: response.data.access_token})
 
         navigate('Home');
 
     } catch (err) {
-        dispatch({type: 'error', payload: 'Username or password is wrong!'});
+        dispatch({type: 'error', payload: 'incorrect email or password.'});
 
         console.log(err.message);
 
     }
 };
 
+const signIn = (dispatch) => async ({email, password}) => {
 
-const signIn = (dispatch) => {
-    console.log("signIn");
+    let data = {};
 
-    return ({email, password}) => {
-        // try to sign in
-        // update state
-        // reflect error message
-    };
+    data.username = email;
+    data.password = password;
+
+    if (!api) {
+        throw new Error("Api not defined!");
+    }
+
+    try {
+        const response = await api.post('/user/login', data);
+
+        await AsyncStorage.setItem('token', response.data.access_token);
+        await AsyncStorage.setItem('refresh_token', response.data.refresh_token);
+        await AsyncStorage.setItem('scope', response.data.scope);
+
+        dispatch({type: 'signin', payload: response.data.access_token})
+
+        navigate('Home');
+
+    } catch (err) {
+        dispatch({type: 'error', payload: 'incorrect email or password.'});
+
+        console.log(err.message);
+
+    }
 };
-
 const signOut = (dispatch) => {
     console.log("signOut");
 

@@ -9,7 +9,6 @@ const Links = ({navigation, text, routeName}) => {
         <TouchableOpacity onPress={() => navigation.navigate({routeName})}>
             <Spacer>
                 <Text style={styles.link}>
-                    //Already have an account? Sign in instead
                     {text}
                 </Text>
             </Spacer>
