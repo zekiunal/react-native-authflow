@@ -8,10 +8,6 @@ import {NavigationEvents} from "react-navigation";
 const SignInScreen = () => {
     const {state, SignIn, clear, autoSignIn} = useContext(AuthContext);
 
-    useEffect(() => {
-        autoSignIn();
-    }, []);
-
     return (
         <View style={styles.container}>
 

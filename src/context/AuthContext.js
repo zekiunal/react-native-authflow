@@ -36,7 +36,7 @@ const autoSignIn = (dispatch) => async () => {
     }
 };
 
-const clearErrors = (dispatch) => () => {
+const clear = (dispatch) => () => {
     dispatch({type: 'clear'})
 };
 
@@ -109,6 +109,6 @@ const signOut = (dispatch) => {
 
 export const {Provider, Context} = createDataContext(
     authReducer,
-    {signIn, signOut, signUp, initApi, clearErrors, autoSignIn},
+    {signIn, signOut, signUp, initApi, clear, autoSignIn},
     {token: false, error: false}
 );
