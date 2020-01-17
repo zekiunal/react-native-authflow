@@ -1,6 +1,6 @@
 import createDataContext from './createDataContext';
 import axios from "../api/api";
-import AuthFlowConfig from "react-native-authflow/src/helpers/AuthFlowConfig";
+import AuthFlowConfig from "../helpers/AuthFlowConfig";
 import AsyncStorage from '@react-native-community/async-storage';
 import {navigate} from "react-native-easy-navigator";
 
