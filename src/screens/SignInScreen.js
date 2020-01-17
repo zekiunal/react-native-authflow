@@ -7,7 +7,7 @@ import {NavigationEvents} from "react-navigation";
 import Spacer from "react-native-authflow/src/components/Spacer";
 
 const SignInScreen = (props) => {
-    const {state, SignIn, clear, autoSignIn, changeLanguage} = useContext(AuthContext);
+    const {state, signIn, clear, autoSignIn, changeLanguage} = useContext(AuthContext);
 
     const language = props.screenProps.translate[state.language];
 
@@ -26,7 +26,7 @@ const SignInScreen = (props) => {
             <AuthForm
                 headerText={language.header.signIn}
                 errorMessage={state.error}
-                onSubmit={({email, password}) => SignIn({email, password})}
+                onSubmit={({email, password}) => signIn({email, password})}
                 submitButtonText={language.button.signIn}
             />
             <Links
