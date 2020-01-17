@@ -30,12 +30,12 @@ export default class AuthFlowConfig {
             tr: {
                 RTL: false,
                 header: {
-                    signUp: 'Sign Up',
-                    signIn: 'Sign In'
+                    signUp: 'Hemen Üye Ol!',
+                    signIn: 'Giriş'
                 },
                 form: {
-                    email: 'Email',
-                    password: 'Password'
+                    email: 'E-Posta',
+                    password: 'Şifre'
                 },
                 button: {
                     signUp: 'Üye Ol',
