@@ -17,7 +17,7 @@ const authReducer = (state, action) => {
     switch (action.type) {
         case 'error':
             return {...state, error: action.payload, token: false};
-        case 'signup':
+        case 'signin':
             return {...state, token: action.payload, error: false};
         default:
             return state;
