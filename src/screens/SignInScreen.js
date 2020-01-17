@@ -17,28 +17,23 @@ const SignInScreen = (props) => {
 
     return (
         <View style={styles.container}>
-
             <NavigationEvents
                 onWillFocus={() => {}}
                 onDidFocus={() => {}}
                 onWillBlur={clear}
                 onDidBlur={() => {}}
             />
-
             <AuthForm
                 headerText={language.header.signIn}
                 errorMessage={state.error}
                 onSubmit={({email, password}) => SignIn({email, password})}
                 submitButtonText={language.button.signIn}
             />
-
             <Links
                 text={language.link.signUp}
                 routeName="SignUp"
                 onSubmitLanguage={changeLanguage}
             />
-
-
 
         </View>
     );
