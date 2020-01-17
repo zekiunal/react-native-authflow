@@ -19,6 +19,8 @@ const authReducer = (state, action) => {
             return {...state, error: action.payload, token: false};
         case 'signin':
             return {...state, token: action.payload, error: false};
+        case 'signOut':
+            return {...state, token: action.payload, error: false};
         case 'clear':
             return {...state, error: false};
         default:
@@ -32,7 +34,7 @@ const autoSignIn = (dispatch) => async () => {
         dispatch({type: 'signin', payload: token});
         navigate('Home');
     } else {
-        navigate('SignUp');
+        navigate('SignIn');
     }
 };
 
@@ -100,10 +102,10 @@ const signIn = (dispatch) => async ({email, password}) => {
     }
 };
 const signOut = (dispatch) => {
-    console.log("signOut");
-
-    return () => {
-        // sign out
+    return async () => {
+        await AsyncStorage.removeItem('token');
+        dispatch({type: 'signOut', payload: false});
+        navigate('SignIn');
     };
 };
 

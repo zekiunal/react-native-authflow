@@ -8,8 +8,8 @@ import AuthFlowConfig from "./src/helpers/AuthFlowConfig";
 
 const createAuthFlowNavigation = () => {
     return createStackNavigator({
-        SignUp: SignUpScreen,
-        SignIn: SignInScreen
+        SignIn: SignInScreen,
+        SignUp: SignUpScreen
     });
 };
 
