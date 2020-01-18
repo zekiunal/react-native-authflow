@@ -1,5 +1,5 @@
-import React, {useContext, useEffect} from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import React, {useContext} from 'react';
+import {View, StyleSheet} from 'react-native';
 import {Context as AuthContext} from "../context/AuthContext";
 import AuthForm from "../components/AuthForm";
 import Links from "../components/Links";
@@ -8,13 +8,10 @@ import Spacer from "react-native-authflow/src/components/Spacer";
 
 const SignInScreen = (props) => {
 
-    const {state, signIn, clear, autoSignIn, changeLanguage} = useContext(AuthContext);
+    const {state, signIn, clear, changeLanguage} = useContext(AuthContext);
 
     const language = props.screenProps.translate[state.language];
 
-    useEffect(() => {
-        autoSignIn();
-    }, []);
 
     return (
         <View style={styles.container}>
