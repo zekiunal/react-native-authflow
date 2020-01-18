@@ -60,7 +60,7 @@ export default class AuthFlowConfig {
     };
 
     static setConfig(config) {
-        this.configuration = _.merge(this.configuration, config);
+        this.configuration = _.merge({}, this.configuration, config);
     }
 
     static getConfig() {
@@ -74,7 +74,7 @@ export default class AuthFlowConfig {
     }
 
     static setApiConfig(config) {
-        this.configuration.api = _.merge(this.configuration, config);
+        this.configuration.api = _.merge({}, this.configuration.api, config);
         return this.configuration.api;
     }
 }
