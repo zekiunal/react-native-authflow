@@ -25,6 +25,9 @@ export default class AuthFlowConfig {
                 link: {
                     signUp: "Dont you have an account? Sign up instead",
                     signIn: "Already have an account? Sign in instead"
+                },
+                text: {
+                    loading: ''
                 }
             },
             tr: {
@@ -45,6 +48,9 @@ export default class AuthFlowConfig {
                 link: {
                     signUp: "Kayıtlı bir hesabınız yok mu? Üye olun!",
                     signIn: "Zaten üye misiniz? Giriş yapın!"
+                },
+                text: {
+                    loading: ''
                 }
             }
         },

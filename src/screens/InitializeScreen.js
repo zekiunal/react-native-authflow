@@ -2,9 +2,12 @@ import React, {useEffect, useContext} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {Context as AuthContext} from "../context/AuthContext";
 
-const InitializeScreen = () => {
+const InitializeScreen = (props) => {
 
-    const {autoSignIn} = useContext(AuthContext);
+    const {state, autoSignIn} = useContext(AuthContext);
+
+    const language = props.screenProps.translate[state.language];
+
 
     useEffect(() => {
         autoSignIn();
@@ -12,7 +15,7 @@ const InitializeScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>loading...</Text>
+            <Text style={styles.text}>l{language.text.loading}</Text>
         </View>
     );
 };

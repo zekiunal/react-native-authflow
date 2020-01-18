@@ -7,7 +7,7 @@ import {NavigationEvents} from "react-navigation";
 
 const SignUpScreen = (props) => {
 
-    const {state, signUp, clear, autoSignIn, changeLanguage} = useContext(AuthContext);
+    const {state, signUp, clear, changeLanguage} = useContext(AuthContext);
 
     const language = props.screenProps.translate[state.language];
 
