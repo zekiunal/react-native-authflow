@@ -1,7 +1,7 @@
 {
   "name": "react-native-authflow",
   "title": "React Native Authflow",
-  "version": "0.0.42",
+  "version": "0.0.43",
   "description": "TODO",
   "main": "index.js",
   "scripts": {
@@ -33,7 +33,8 @@
     "react-native-screens": "2.0.0-alpha.23",
     "react-navigation": "4.0.10",
     "react-navigation-stack": "2.0.13",
-    "react-native-easy-navigator": "0.0.1"
+    "react-native-easy-navigator": "0.0.1",
+    "lodash": "4.17.15"
   },
   "peerDependencies": {
     "react": "^16.9.0",

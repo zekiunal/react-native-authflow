@@ -1,4 +1,5 @@
 import React from 'react';
+import {_} from 'lodash';
 
 export default class AuthFlowConfig {
     static configuration = {
@@ -59,7 +60,7 @@ export default class AuthFlowConfig {
     };
 
     static setConfig(config) {
-        this.configuration = config
+        this.configuration = _.merge(this.configuration, config);
     }
 
     static getConfig() {
@@ -73,7 +74,7 @@ export default class AuthFlowConfig {
     }
 
     static setApiConfig(config) {
-        this.configuration.api = config
+        this.configuration.api = _.merge(this.configuration, config);
         return this.configuration.api;
     }
 }
