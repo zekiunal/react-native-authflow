@@ -15,7 +15,7 @@ const InitializeScreen = (props) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>l{language.text.loading}</Text>
+            <Text style={styles.text}>{language.text.loading}</Text>
         </View>
     );
 };
