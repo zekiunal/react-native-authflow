@@ -2,14 +2,14 @@ import createDataContext from './createDataContext';
 import AuthFlowConfig from "../helpers/AuthFlowConfig";
 import AsyncStorage from '@react-native-community/async-storage';
 
-let default_language = loaded_language = AuthFlowConfig.getConfig().language;
+let config = AuthFlowConfig.getConfig();
+let default_language = loaded_language = config.language;
 let isReady = false;
-
+let dictionary = config.translate;
 
 const initLanguageFlow = async (dispatch) => {
     console.log("initLanguageFlow");
     const language = await AsyncStorage.getItem('language');
-
     if (language) {
         if (isReady !== true) {
             if (default_language != language) {
@@ -40,6 +40,7 @@ const languageReducer = (state, action) => {
             return state;
         case 'changeLanguage':
             if (state.language !== action.payload) {
+                loaded_language = action.payload;
                 return {...state, language: action.payload};
             }
             return state;
@@ -49,12 +50,11 @@ const languageReducer = (state, action) => {
 };
 
 const translate = (dispatch) => (key) => {
-    const lang = "en";
-    console.log(loaded_language);
-    return AuthFlowConfig.getConfig().translate[lang][key] ? AuthFlowConfig.getConfig().translate[lang][key] : key;
+    lang = loaded_language;
+    return dictionary[lang][key] ? dictionary[lang][key] : key;
 }
 const changeLanguage = (dispatch) => async (language) => {
-    console.log("changeLanguage")
+    console.log("changeLanguage", language)
     await AsyncStorage.setItem('language', language);
     dispatch({type: 'changeLanguage', payload: language})
 };

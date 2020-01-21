@@ -5,42 +5,16 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {navigate} from "react-native-easy-navigator";
 
 let api = false;
-let isReady = false;
-let default_language = AuthFlowConfig.getConfig().language;
+
 const initAuthFlow = async (dispatch) => {
     console.log("initAuthFlow");
     api = axios(AuthFlowConfig.getApiConfig());
-    const language = await AsyncStorage.getItem('language');
-
-    if (language) {
-        if (isReady !== true) {
-            if(default_language != language) {
-                dispatch({type: "changeLanguage", payload: language})
-            }
-            dispatch({type: "ready", payload: true})
-        }
-    } else {
-        const language = default_language;
-        if (isReady !== true) {
-            dispatch({type: "changeLanguage", payload: language})
-            dispatch({type: "ready", payload: true})
-        }
-    }
 };
 
 const authReducer = (state, action) => {
     console.log("authReducer", action, state);
 
     switch (action.type) {
-        case 'ready':
-            console.log(state.isReady, action.payload, isReady)
-
-            if (state.isReady !== action.payload) {
-                console.log(state.isReady, action.payload, isReady)
-                isReady = true;
-                return {...state, isReady: action.payload};
-            }
-            return state;
         case 'error':
             return {...state, error: action.payload, token: false};
         case 'signin':
@@ -49,12 +23,6 @@ const authReducer = (state, action) => {
             return {...state, token: action.payload, error: false};
         case 'clear':
             return {...state, error: false};
-        case 'changeLanguage':
-            if (state.language !== action.payload) {
-                console.log("changeLanguage");
-                return {...state, language: action.payload};
-            }
-            return state;
         default:
             return state;
     }
@@ -136,15 +104,8 @@ const signOut = (dispatch) => async () => {
     navigate('SignIn');
 };
 
-const changeLanguage = (dispatch) => async (language) => {
-    console.log("changeLanguage", language);
-    await AsyncStorage.setItem('language', language);
-    dispatch({type: 'changeLanguage', payload: language})
-};
-
-
 export const {Provider, Context} = createDataContext(
     authReducer,
-    {signIn, signOut, signUp, initAuthFlow, clear, autoSignIn, changeLanguage},
-    {token: false, error: false, isReady: false, language: default_language}
+    {signIn, signOut, signUp, initAuthFlow, clear, autoSignIn},
+    {token: false, error: false}
 );
