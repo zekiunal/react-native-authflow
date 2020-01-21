@@ -1,5 +1,6 @@
 import React from 'react';
 import {_} from 'lodash';
+import translate from "./translate";
 
 export default class AuthFlowConfig {
     static configuration = {
@@ -7,30 +8,7 @@ export default class AuthFlowConfig {
         SignIn: {},
         SignUp: {},
         SignOut: {},
-        translate: {
-            "en": {
-                RTL: false,
-                "Sign In": null,
-                "Sign Up": null,
-                "Sign Out": null,
-                "E-Mail": null,
-                "Password": null,
-                "loading": null,
-                "Already have an account? Sign in instead": null,
-                "Dont you have an account? Sign up instead": null
-            },
-            "tr": {
-                RTL: false,
-                "Sign In": 'Giriş',
-                "Sign Up": 'Üye Ol',
-                "Sign Out": 'Çıkış',
-                "E-Mail": 'E-Posta Adresi',
-                "Password": 'Şifre',
-                "loading": 'yükleniyor',
-                "Already have an account? Sign in instead" : "Zaten üye misiniz? Giriş yapın!",
-                "Dont you have an account? Sign up instead": "Kayıtlı bir hesabınız yok mu? Üye olun!"
-            }
-        },
+        translate: translate,
         language: 'tr',
         defaultRoute: 'Home'
     };
