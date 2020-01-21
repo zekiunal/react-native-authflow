@@ -5,13 +5,14 @@ import AuthForm from "../components/AuthForm";
 import Links from "../components/Links";
 import {NavigationEvents} from "react-navigation";
 import Spacer from "react-native-authflow/src/components/Spacer";
+import {LanguageContext} from "../../../../App";
 
 const SignInScreen = (props) => {
+    console.log('SignInScreen');
 
     const {state, signIn, clear, changeLanguage} = useContext(AuthContext);
-
-    const language = props.screenProps.translate[state.language];
-
+    
+    const language = useContext(LanguageContext)[state.language];
 
     return (
         <View style={styles.container}>

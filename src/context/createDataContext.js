@@ -3,6 +3,9 @@ import api from "../api/api";
 import AuthFlowConfig from "react-native-authflow/src/helpers/AuthFlowConfig";
 
 export default (reducer, actions, defaultValue) => {
+
+    console.log("createDataContext")
+
     const Context = React.createContext();
 
     const Provider = (props) => {

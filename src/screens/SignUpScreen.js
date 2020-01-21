@@ -6,6 +6,7 @@ import Links from "../components/Links";
 import {NavigationEvents} from "react-navigation";
 
 const SignUpScreen = (props) => {
+    console.log('SignUpScreen');
 
     const {state, signUp, clear, changeLanguage} = useContext(AuthContext);
 
