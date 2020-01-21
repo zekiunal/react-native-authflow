@@ -8,51 +8,31 @@ export default class AuthFlowConfig {
         SignUp: {},
         SignOut: {},
         translate: {
-            en: {
+            "en": {
                 RTL: false,
-                header: {
-                    signUp: 'Sign Up',
-                    signIn: 'Sign In'
-                },
-                form: {
-                    email: 'Email',
-                    password: 'Password'
-                },
-                button: {
-                    signUp: 'Sign Up',
-                    signIn: 'Sign In',
-                    signOut: 'Sign Out'
-                },
-                link: {
-                    signUp: "Dont you have an account? Sign up instead",
-                    signIn: "Already have an account? Sign in instead"
-                },
-                text: {
-                    loading: ''
-                }
+                signUp: 'Üye Ol!',
+                signIn: 'Giriş',
+                signOut: 'Çıkış',
+                "E-Mail": 'E-Mail',
+                password: 'Şifre',
+                signUpLink: "Kayıtlı bir hesabınız yok mu? Üye olun!",
+                signInLink: "Zaten üye misiniz? Giriş yapın!",
+                "loading": 'loading...',
+                "Already have an account? Sign in instead" : "Already have an account? Sign in instead",
+                "Dont you have an account? Sign up instead": "Dont you have an account? Sign up instead"
             },
-            tr: {
+            "tr": {
                 RTL: false,
-                header: {
-                    signUp: 'Hemen Üye Ol!',
-                    signIn: 'Giriş'
-                },
-                form: {
-                    email: 'E-Posta',
-                    password: 'Şifre'
-                },
-                button: {
-                    signUp: 'Üye Ol',
-                    signIn: 'Giriş',
-                    signOut: 'Çıkış'
-                },
-                link: {
-                    signUp: "Kayıtlı bir hesabınız yok mu? Üye olun!",
-                    signIn: "Zaten üye misiniz? Giriş yapın!"
-                },
-                text: {
-                    loading: ''
-                }
+                signUp: 'Üye Ol!',
+                signIn: 'Giriş',
+                signOut: 'Çıkış',
+                password: 'Şifre',
+                signUpLink: "Kayıtlı bir hesabınız yok mu? Üye olun!",
+                signInLink: "Zaten üye misiniz? Giriş yapın!",
+                "loading": 'yükleniyor',
+
+                "Already have an account? Sign in instead" : "Zaten üye misiniz? Giriş yapın!",
+                "Dont you have an account? Sign up instead": "Kayıtlı bir hesabınız yok mu? Üye olun!"
             }
         },
         language: 'tr',

@@ -33,7 +33,10 @@ const authReducer = (state, action) => {
 
     switch (action.type) {
         case 'ready':
+            console.log(state.isReady, action.payload, isReady)
+
             if (state.isReady !== action.payload) {
+                console.log(state.isReady, action.payload, isReady)
                 isReady = true;
                 return {...state, isReady: action.payload};
             }
@@ -48,6 +51,7 @@ const authReducer = (state, action) => {
             return {...state, error: false};
         case 'changeLanguage':
             if (state.language !== action.payload) {
+                console.log("changeLanguage");
                 return {...state, language: action.payload};
             }
             return state;
