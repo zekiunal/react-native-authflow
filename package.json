@@ -34,7 +34,7 @@
     "react-navigation": "4.0.10",
     "react-navigation-stack": "2.0.13",
     "react-native-easy-navigator": "0.0.1",
-    "lodash": "4.17.15"
+    "lodash": "4.17.19"
   },
   "peerDependencies": {
     "react": "^16.9.0",
